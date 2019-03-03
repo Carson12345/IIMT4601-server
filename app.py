@@ -1,7 +1,14 @@
 from flask import Flask, render_template,request,redirect,url_for # For flask implementation
 from bson import ObjectId # For ObjectId to work
 from pymongo import MongoClient
-import os
+
+import os, sys
+
+from os.path import dirname, join, abspath
+sys.path.insert(0, abspath(join(dirname(__file__), '..')))
+
+from praw_functions import *
+from flask import jsonify
 
 app = Flask(__name__)
 title = "TODO sample application with Flask and MongoDB"
@@ -27,6 +34,10 @@ def lists ():
 	return render_template('index.html',a1=a1,todos=todos_l,t=title,h=heading)
 
 @app.route("/")
+def displayRes ():
+	return jsonify(showPrawRes())
+
+@app.route("/page")
 @app.route("/uncompleted")
 def tasks ():
 	#Display the Uncompleted Tasks
@@ -102,4 +113,4 @@ def search():
 	return render_template('searchlist.html',todos=todos_l,t=title,h=heading)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=80, host='0.0.0.0') 
+    app.run(debug=True, port=5000, host='0.0.0.0') 
