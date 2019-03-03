@@ -102,4 +102,4 @@ def search():
 	return render_template('searchlist.html',todos=todos_l,t=title,h=heading)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8081, host='0.0.0.0') 
+    app.run(debug=True, port=80, host='0.0.0.0') 
