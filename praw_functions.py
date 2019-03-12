@@ -64,3 +64,4 @@ def showPrawRes():
                 print("Current time:", time.time())
                 print("New submission number: 0")
                 print("No update to database")
+        return usercoll.find()
