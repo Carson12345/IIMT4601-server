@@ -1,5 +1,5 @@
 from pymongo import MongoClient, ReturnDocument
-import urlparse
+from urlparse import urlparse
 import pandas as pd
 import json
 import time 
