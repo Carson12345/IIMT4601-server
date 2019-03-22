@@ -126,9 +126,13 @@ def findAuthor(author):
 	foundList = []
 	print(request.data)
 	print(request.json)
-	found = db['testUsers_1'].find_one({'author': author})
-	found = JSONEncoder().encode(found)
-	return jsonify(found)
+	print(names)
+	names = request.form.getlist('names')
+	for author in names:
+		found = db['testUsers_1'].find_one({'author': author})
+		found = JSONEncoder().encode(found)
+		foundList.append(found)
+	return jsonify(foundList)
 
 if __name__ == "__main__":
     app.run(debug=True, port=80, host='0.0.0.0') 
