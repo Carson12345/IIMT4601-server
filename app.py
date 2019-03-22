@@ -129,7 +129,7 @@ def getDomains():
 	return jsonify(domains)
 
 @app.route("/author", methods=['POST'])
-def findAuthor(author):
+def findAuthor():
 	foundList = []
 	print(request.data)
 	print(request.json)
