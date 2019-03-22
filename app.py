@@ -132,7 +132,7 @@ def getDomains():
 def findAuthor():
 	foundList = []
 	print(request.json)
-	names = request.form.getlist('names')
+	names = request.json['names']
 	print(names)
 	for author in names:
 		print('author: ' + author)
