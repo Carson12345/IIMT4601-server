@@ -121,6 +121,12 @@ def search():
 		todos_l = todos.find({refer:key})
 	return render_template('searchlist.html',todos=todos_l,t=title,h=heading)
 
+@app.route("/get_domains", methods=['GET'])
+def getDomains():
+	domains = df['testDomain'].find()
+	domains = JSONEncoder().encode(domains)
+	return jsonify(domains)
+
 @app.route("/author", methods=['POST'])
 def findAuthor(author):
 	foundList = []
