@@ -127,7 +127,7 @@ def findAuthor(author):
 	print(request.data)
 	print(request.json)
 	names = request.form.getlist('names')
-		print(names)
+	print(names)
 	for author in names:
 		found = db['testUsers_1'].find_one({'author': author})
 		found = JSONEncoder().encode(found)
