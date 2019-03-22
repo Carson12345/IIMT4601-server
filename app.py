@@ -124,7 +124,7 @@ def search():
 
 @app.route("/get_domains", methods=['GET'])
 def getDomains():
-	domains = db['testDomain'].find()
+	domains = db['domainTest'].find()
 	domains = dumps(domains)
 	return jsonify(domains)
 
