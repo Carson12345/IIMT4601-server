@@ -131,7 +131,7 @@ def getDomains():
 @app.route("/author", methods=['POST'])
 def findAuthor():
 	foundList = []
-
+	print(request.json)
 	names = request.form.getlist('names')
 	print(names)
 	for author in names:
