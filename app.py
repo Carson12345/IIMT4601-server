@@ -121,7 +121,7 @@ def search():
 		todos_l = todos.find({refer:key})
 	return render_template('searchlist.html',todos=todos_l,t=title,h=heading)
 
-@app.route("/author/<author>", methods=['POST'])
+@app.route("/author", methods=['POST'])
 def findAuthor(author):
 	foundList = []
 	print(request.data)
