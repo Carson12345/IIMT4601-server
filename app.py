@@ -9,6 +9,7 @@ sys.path.insert(0, abspath(join(dirname(__file__), '..')))
 
 from praw_functions import *
 from flask import jsonify
+from bson.json_util import dumps
 
 app = Flask(__name__)
 title = "TODO sample application with Flask and MongoDB"
@@ -124,7 +125,7 @@ def search():
 @app.route("/get_domains", methods=['GET'])
 def getDomains():
 	domains = db['testDomain'].find()
-	domains = JSONEncoder().encode(domains)
+	domains = dumps(domains)
 	return jsonify(domains)
 
 @app.route("/author", methods=['POST'])
