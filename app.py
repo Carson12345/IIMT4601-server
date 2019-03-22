@@ -112,5 +112,10 @@ def search():
 		todos_l = todos.find({refer:key})
 	return render_template('searchlist.html',todos=todos_l,t=title,h=heading)
 
+@app.route("/author/<author>", methods=['GET'])
+def findAuthor(author):
+	found = db['testUsers_1'].find_one({'author': author})
+	return jsonify(found)
+
 if __name__ == "__main__":
     app.run(debug=True, port=80, host='0.0.0.0') 
