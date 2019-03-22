@@ -21,6 +21,15 @@ client = MongoClient("mongodb://admin:iimt4601@ds019481.mlab.com:19481/iimt4601"
 db = client['iimt4601']    #Select the database
 todos = db.todo #Select the collection name
 
+import json
+from bson import ObjectId
+
+class JSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, ObjectId):
+            return str(o)
+        return json.JSONEncoder.default(self, o)
+
 def redirect_url():
     return request.args.get('next') or \
            request.referrer or \
@@ -115,6 +124,7 @@ def search():
 @app.route("/author/<author>", methods=['GET'])
 def findAuthor(author):
 	found = db['testUsers_1'].find_one({'author': author})
+	found = JSONEncoder().encode(found)
 	return jsonify(found)
 
 if __name__ == "__main__":
