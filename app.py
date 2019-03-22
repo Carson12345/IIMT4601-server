@@ -123,7 +123,7 @@ def search():
 
 @app.route("/get_domains", methods=['GET'])
 def getDomains():
-	domains = df['testDomain'].find()
+	domains = db['testDomain'].find()
 	domains = JSONEncoder().encode(domains)
 	return jsonify(domains)
 
