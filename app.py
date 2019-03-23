@@ -138,7 +138,8 @@ def findAuthor():
 	if (request.values and request.values.get("names")):
 		names = list(request.values.get("names"))
 	print(request.data)
-	print(names)
+	print(request.values)
+	print(request.values.get("names"))
 	# names = request.json['names']
 	for author in names:
 		print('found author: ' + author)
