@@ -140,9 +140,8 @@ def findAuthor():
 	for author in names:
 		print('found author: ' + author)
 		found = db['testUsers_1'].find_one({'author': author})
-		found = JSONEncoder().encode(found)
 		foundList.append(found)
-	return jsonify(foundList)
+	return dumps(foundList)
 
 if __name__ == "__main__":
     app.run(debug=True, port=80, host='0.0.0.0') 
