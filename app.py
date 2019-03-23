@@ -137,7 +137,6 @@ def findAuthor():
 	names = []
 	names = request.form.getlist('names[]')
 	print(request.form.getlist('names[]'))
-	print(request.json['names'])
 	for author in names:
 		print('found author: ' + author)
 		found = db['testUsers_1'].find_one({'author': author})
