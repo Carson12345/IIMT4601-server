@@ -142,7 +142,7 @@ def findAuthor():
 	print(request.values.get("names"))
 	print(request.form)
 	print(request.form.get("names"))
-	print(request.form.getlist('names[]'))
+	print(request.form.to_dict())
 	# names = request.json['names']
 	for author in names:
 		print('found author: ' + author)
