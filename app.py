@@ -135,10 +135,9 @@ def getDomains():
 def findAuthor():
 	foundList = []
 	names = []
-	if (request.values and request.values.get("names")):
-		names = request.form.getlist('names[]')
-		print(request.form.getlist('names[]'))
-		print(request.json['names'])
+	names = request.form.getlist('names[]')
+	print(request.form.getlist('names[]'))
+	print(request.json['names'])
 	for author in names:
 		print('found author: ' + author)
 		found = db['testUsers_1'].find_one({'author': author})
