@@ -1,6 +1,8 @@
 from flask import Flask, render_template,request,redirect,url_for # For flask implementation
 from bson import ObjectId # For ObjectId to work
 from pymongo import MongoClient
+from flask_cors import CORS
+
 
 import os, sys
 
@@ -12,6 +14,7 @@ from flask import jsonify
 from bson.json_util import dumps
 
 app = Flask(__name__)
+CORS(app)
 title = "TODO sample application with Flask and MongoDB"
 heading = "TODO Reminder with Flask and MongoDB"
 
