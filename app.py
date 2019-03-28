@@ -140,6 +140,7 @@ def findAuthor():
 	for author in names:
 		print('found author: ' + author)
 		found = db['Users'].find_one({'author': author})
+		print(found)
 		if (found):
 			foundList.append(found)
 	return dumps(foundList)
