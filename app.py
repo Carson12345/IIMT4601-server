@@ -140,7 +140,8 @@ def findAuthor():
 	for author in names:
 		print('found author: ' + author)
 		found = db['testUsers_1'].find_one({'author': author})
-		foundList.append(found)
+		if (found):
+			foundList.append(found)
 	return dumps(foundList)
 
 # port = int(os.environ.get('PORT', 33507))
