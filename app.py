@@ -139,7 +139,7 @@ def findAuthor():
 	print(request.form.getlist('names[]'))
 	for author in names:
 		print('found author: ' + author)
-		found = db['testUsers_1'].find_one({'author': author})
+		found = db['Users'].find_one({'author': author})
 		if (found):
 			foundList.append(found)
 	return dumps(foundList)
