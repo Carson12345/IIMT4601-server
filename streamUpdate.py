@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 SUBREDDITS = "news+worldnews+nottheonion+UpliftingNews+offbeat+gamernews+floridaman+energy+syriancivilwar+truecrime+Politics+worldpolitics+Libertarian+anarchism+socialism+conservative+politicalhumor+neutralpolitics+politicaldiscussion+ukpolitics+geopolitics+communism+completeanarchy"
 DATABASE = "mongodb://admin:iimt4601@ds019481.mlab.com:19481/iimt4601"
 DOMAINDB = 'testDomains_2'
-USERDB = 'testUsers_1'
+USERDB = 'Users'
 
 # "tag_in_domain_db":"data_field_in_user_db"
 tagDict = {
