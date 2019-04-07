@@ -62,11 +62,11 @@ def singleUpdate(domaincoll, usercoll, sub):
         doc = domaincoll.find({'domain':{'$regex':expression}})[0] 
     except IndexError as err:
         usercoll.find_one_and_update({'author':sub['author']}, {'$inc':{tagDict['None']:1, 'count':1}}, return_document=ReturnDocument.AFTER)
-        return "! Error in domain query: "+str(err)+" when querying for "+sub['url']+"\n* Update user's not_identified."
+        return "! QueryError in domain query: "+str(err)+" when querying for "+sub['url']+"\n* Update user's not_identified."
 
     try:
         # must update score before update count
-        newscore = (user['score'] * user['count'] + doc['score']) / (user['count'] + 1 - user[tagDict['None']])
+        newscore = (user['score'] * (user['count'] - user[tagDict['None']])+ doc['score']) / (user['count'] + 1 - user[tagDict['None']])
         usercoll.find_one_and_update({'author':sub['author']}, {'$inc':{tagDict[doc['tag']]:1, 'count':1}, '$set':{'score':newscore}}, return_document=ReturnDocument.AFTER)
         return "* Update: "+user['author']
     except KeyError:
