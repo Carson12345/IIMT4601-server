@@ -81,7 +81,9 @@ if __name__ == "__main__":
         domaincoll = db[DOMAINDB]
         usercoll = db[USERDB]
         reddit = login()
-        for s in reddit.subreddit(SUBREDDITS).stream.submissions():
+        for s in reddit.subreddit(SUBREDDITS).stream.submissions(pause_after=0):
+	    if s is None:
+		continue
             obj = dict()
             obj["author"] = s.author.name
             obj["url"] = parseUrl(s.url)
